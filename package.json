@@ -1,0 +1,24 @@
+{
+  "name": "sentiment-planet",
+  "version": "1.0.0",
+  "description": "한국어 중심의 텍스트 감성 분석 웹 서비스",
+  "type": "module",
+  "main": "api/analyze.js",
+  "scripts": {
+    "test": "node --test tests/**/*.test.js",
+    "dev": "node dev-server.js"
+  },
+  "keywords": [
+    "sentiment-analysis",
+    "openai",
+    "supabase",
+    "korean-nlp"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "openai": "^4.86.1"
+  }
+}
+

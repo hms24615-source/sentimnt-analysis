@@ -1,0 +1,86 @@
+/* ==============================================================================
+   기본 스타일 및 리셋 (Base Styles) - css/base.css
+   목적: 브라우저 기본 스타일 초기화, 기본 글꼴, 접근성 보조 스타일을 설정합니다.
+   ============================================================================== */
+
+/* 모든 요소에 박스 사이징 적용 (패딩과 테두리가 너비 계산에 포함되어 가로 스크롤 방지) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 기본 HTML 설정 */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 본문(Body) 기본 스타일 */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 링크 기본 스타일 리셋 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 버튼 기본 스타일 리셋 */
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 입력 필드 기본 스타일 리셋 */
+textarea,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+/* 키보드 접근성을 위한 명확한 포커스 링 표시 */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* 스크린 리더 사용자만을 위한 시각적 숨김 클래스 (접근성 보장) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 애니메이션 감소 환경 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

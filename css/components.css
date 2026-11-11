@@ -1,0 +1,300 @@
+/* ==============================================================================
+   컴포넌트 스타일 (Component Styles) - css/components.css
+   목적: 버튼, 입력창, 결과 카드, 에러 박스 등 UI 독립 구성 요소들의 스타일을 정의합니다.
+   ============================================================================== */
+
+/* ==============================================================================
+   1. 버튼 컴포넌트 (Button)
+   ============================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+  white-space: nowrap;
+}
+
+/* 주요 검정 pill 버튼 */
+.btn-primary {
+  background-color: var(--color-text);
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #262626;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* 비활성화 상태 버튼 */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 가로 전체 폭 버튼 */
+.btn-block {
+  width: 100%;
+  padding: 15px 24px;
+  font-size: 1.05rem;
+}
+
+/* 보조 버튼 (재분석 및 다시 시도) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #f0f1f4;
+}
+
+/* ==============================================================================
+   2. 입력 폼 카드 (Input Card & Textarea)
+   ============================================================================== */
+.input-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.input-caption {
+  font-size: 0.92rem;
+  color: var(--color-muted);
+}
+
+/* 텍스트 입력창 (Textarea) */
+.sentiment-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) - 4px);
+  background-color: var(--color-bg);
+  resize: vertical;
+  line-height: 1.6;
+  font-size: 1rem;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.sentiment-textarea:focus {
+  background-color: #ffffff;
+  border-color: var(--color-text);
+}
+
+.sentiment-textarea::placeholder {
+  color: #9ea2aa;
+}
+
+/* 텍스트 하단 메타 정보 (글자 수 카운터 및 보안 안내) */
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  gap: 12px;
+}
+
+.char-counter {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.privacy-notice {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==============================================================================
+   3. 로딩 상태 스피너 (Loading Spinner)
+   ============================================================================== */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==============================================================================
+   4. 에러 알림 카드 (Error Alert)
+   ============================================================================== */
+.alert-error {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-control);
+  padding: 16px 20px;
+  color: var(--color-error);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+  animation: fadeIn var(--transition-normal);
+}
+
+.alert-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.alert-message {
+  font-size: 0.88rem;
+  color: #4a1d1d;
+  line-height: 1.5;
+}
+
+/* ==============================================================================
+   5. 분석 결과 카드 (Result Card)
+   ============================================================================== */
+.result-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding: 28px;
+  margin-top: 24px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+}
+
+/* 감성 라벨 뱃지 (긍정, 부정, 중립) */
+.sentiment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.badge-positive {
+  background-color: var(--color-positive-bg);
+  color: var(--color-positive);
+  border: 1px solid var(--color-positive-border);
+}
+
+.badge-negative {
+  background-color: var(--color-negative-bg);
+  color: var(--color-negative);
+  border: 1px solid var(--color-negative-border);
+}
+
+.badge-neutral {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-neutral);
+  border: 1px solid var(--color-neutral-border);
+}
+
+/* 신뢰도 표시 */
+.confidence-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.confidence-label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.confidence-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 분석 이유 본문 */
+.reason-box {
+  background-color: var(--color-bg);
+  padding: 18px 20px;
+  border-radius: calc(var(--radius-control) - 4px);
+  border-left: 4px solid var(--color-text);
+}
+
+.reason-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.reason-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  word-break: keep-all;
+}
+
+/* 재분석 동선 버튼 */
+.result-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+

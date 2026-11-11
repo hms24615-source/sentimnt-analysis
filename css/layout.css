@@ -1,0 +1,223 @@
+/* ==============================================================================
+   페이지 레이아웃 (Layout Styles) - css/layout.css
+   목적: 헤더, 히어로 영역, 메인 콘텐츠, 푸터의 전체적인 배치와 반응형 그리드를 정의합니다.
+   ============================================================================== */
+
+/* 전체 페이지 컨테이너 */
+.page-wrapper {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-page);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==============================================================================
+   1. 상단 헤더 (Header)
+   ============================================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  gap: 16px;
+}
+
+/* 좌측 로고 (기울어진 굵은 워드마크) */
+.brand-logo {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* 중앙 내비게이션 링크 목록 */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+/* ==============================================================================
+   2. 히어로 섹션 (Hero Section)
+   ============================================================================== */
+.hero-section {
+  padding: 32px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 440px;
+  position: relative;
+}
+
+/* 상단 소개 문구와 우측 비주얼 그리드 */
+.hero-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: var(--color-text);
+  word-break: keep-all;
+}
+
+.hero-desc {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* 우측 상단 우주 비주얼 카드 (CSS 그래픽 폴백 탑재) */
+.hero-visual-card {
+  width: 100%;
+  height: 220px;
+  border-radius: var(--radius-control);
+  background: linear-gradient(135deg, #111425 0%, #1f2740 50%, #2f3e66 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 우주 비주얼 내 장식 요소 (별빛 효과) */
+.hero-visual-card::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 25%;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.visual-badge {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  color: #ffffff;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 히어로 하단 초대형 타이포그래피 (SENTIMENT) */
+.hero-big-typography {
+  margin-top: 36px;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 2px solid var(--color-text);
+  padding-bottom: 8px;
+}
+
+.hero-big-text {
+  font-family: var(--font-hero);
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-text);
+  user-select: none;
+  display: block;
+}
+
+/* ==============================================================================
+   3. 메인 콘텐츠 및 분석 섹션 (Main Section)
+   ============================================================================== */
+.main-content {
+  flex: 1;
+  padding: 56px 0 80px 0;
+}
+
+.analysis-section {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ==============================================================================
+   4. 푸터 (Footer)
+   ============================================================================== */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 32px 0;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* ==============================================================================
+   5. 반응형 미디어 쿼리 (Responsive Queries)
+   ============================================================================== */
+/* 태블릿 화면 (768px 이하) */
+@media (max-width: 768px) {
+  .hero-top-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero-visual-card {
+    height: 160px;
+    order: -1; /* 모바일/태블릿에서는 비주얼이 먼저 또는 위에 오도록 유연하게 배치 */
+  }
+
+  .nav-links {
+    display: none; /* 모바일에서 메뉴 간소화 (시작하기 버튼만 유지) */
+  }
+}
+
+/* 모바일 화면 (480px 이하) */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 16px 0;
+  }
+
+  .brand-logo {
+    font-size: 1.15rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
